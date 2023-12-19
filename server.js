@@ -1,24 +1,26 @@
 import app from "./app.js";
 import mongoose from "mongoose";
-const PORT = process.env.PORT || 5000
-const hostname = "localhost"
 
-//db connection
-
-// mongoose.connect("mongodb://localhost:27017/ecommerce");
-
-    (async() => {
+   //db connection
+    const Connectedtod = async () => {
       try {
-          await mongoose.connect("mongodb://localhost:27017/ecommerce");
-          console.log("db connected");
+        await mongoose.connect("mongodb://localhost:27017/");
+        console.log("db connected");
+
+        // app.on("error", (err) => {
+        //   console.log("ERROR", err);
+        //   throw err;
+        // });
+
+       
       } catch (error) {
-          console.error("Error :", err);
-          throw err
+        console.log(error.message);
+        
       }
-})()
-
-app.listen(PORT ,() => {
+}
     
-console.log(`server is connected and running in ${hostname}:${PORT}`);
+Connectedtod()
 
-});
+export default Connectedtod;
+  
+
